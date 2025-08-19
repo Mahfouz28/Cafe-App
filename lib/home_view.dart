@@ -32,14 +32,18 @@ class HomeView extends StatelessWidget {
                         if (scrollController.hasClients) {
                           offest = scrollController.offset / 100 - index;
                         }
-                        offest = offest.clamp(0, 2);
+                        offest = offest.clamp(0, .5);
 
                         return Transform.scale(
                           scale: 1 - (offest * 0.2),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context)=>DrinkDetiles()));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DrinkDetiles(),
+                                ),
+                              );
                             },
                             child: Drinks(
                               name: drink.name,

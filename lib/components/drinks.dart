@@ -90,13 +90,10 @@ class Drinks extends StatelessWidget {
               shape: BoxShape.circle,
               border: Border.all(color: Colors.black87),
             ),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.arrow_forward,
-                size: 19,
-                color: Colors.black54,
-              ),
+            child: const Icon(
+              Icons.arrow_forward,
+              size: 19,
+              color: Colors.black54,
             ),
           ),
         ),

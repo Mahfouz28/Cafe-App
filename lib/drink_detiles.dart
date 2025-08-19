@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_menu/components/Qty_widget.dart';
 import 'package:food_menu/components/toggel_widgets.dart';
 import 'package:food_menu/models.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // Import flutter_svg
 
 /// A page that displays detailed views of drinks in a horizontal PageView
 class DrinkDetiles extends StatefulWidget {
@@ -14,6 +15,7 @@ class DrinkDetiles extends StatefulWidget {
 class _DrinkDetilesState extends State<DrinkDetiles> {
   /// Controller to handle PageView scrolling
   final PageController controller = PageController();
+  List size = ["S", "M", "L", "XL"];
 
   /// logic
   int selectedIndex = 0;
@@ -68,12 +70,18 @@ class _DrinkDetilesState extends State<DrinkDetiles> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "€ ${drinks[currentPage.round()].price}",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Row(
+                          children: [
+                            Image.asset("assets/logo/cart.png", height: 20),
+                            SizedBox(width: 8),
+                            Text(
+                              "€ ${drinks[currentPage.round()].price}",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -163,26 +171,29 @@ class _DrinkDetilesState extends State<DrinkDetiles> {
                               selectedIndex = index;
                             });
                           },
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: selectedIndex == index
-                                  ? Colors.blue.shade600
-                                  : Colors.white,
-                              border: Border.all(color: Colors.black54),
-                            ),
-                            child: selectedIndex == index
-                                ? Icon(
-                                    Icons.done,
-                                    color: Colors
-                                        .white, // icon color when selected
-                                  )
-                                : Icon(
-                                    Icons.add,
-                                    color: Colors
-                                        .black54, // icon color when selected
-                                  ), // nothing shown when not selected
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: selectedIndex == index
+                                      ? Colors.blue.shade600
+                                      : Colors.white,
+                                  border: Border.all(color: Colors.black54),
+                                ),
+                                child: selectedIndex == index
+                                    ? Icon(
+                                        Icons.done,
+                                        color: Colors
+                                            .white, // icon color when selected
+                                      )
+                                    : SvgPicture.asset(
+                                        "assets/logo/Vector.svg",
+                                      ), // nothing shown when not selected
+                              ),
+                              Text(size[index]),
+                            ],
                           ),
                         );
                       }),

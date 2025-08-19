@@ -27,10 +27,7 @@ class _QtyWidgetState extends State<QtyWidget> {
                   if (number > 1) number--;
                 });
               },
-              child: Text(
-                "-",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              ),
+              child: Icon(Icons.minimize),
             ),
             SizedBox(width: 20),
 
@@ -46,10 +43,7 @@ class _QtyWidgetState extends State<QtyWidget> {
                   number++;
                 });
               },
-              child: Text(
-                "+",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              ),
+              child: Icon(Icons.add),
             ),
           ],
         ),
